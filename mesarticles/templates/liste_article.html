@@ -1,0 +1,46 @@
+ {% extends "base.html" %}
+ {% block title %}
+     <h2>Liste des Articles</h2>
+{% endblock %} 
+{% block content %}
+        <p><strong> Nous avons  {{taille}}   articles dans ce bog  </strong> </p>
+        <button>  <a href="{% url 'create_article' %}" class="nav-link">Creez un nouvel Article </a></button>
+         <!-- Afficher les données paginées -->
+        <ol>
+            {% for article in articles %}
+             <li>
+                Article Numero : <strong>{{ article.id }} </strong>  <br><br>
+                <strong>Titre : {{ article.titre }} </strong>  <br>
+                Contenu : {{ article.contenu }}<br>
+                Publié le : {{ article.date_publication|date:"d/m/Y    H:i:s"}}<br>
+                Categorie :  <strong> {{ article.non_categorie }} </strong>
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="{{ article.titre }}">
+                {% endif %}
+            <button><a href="{% url 'supprimer_article' article.id  %}" class="nav-link">Supprimer</a></button>
+            <button><a href="{% url 'modifier_article' article.id  %}" class="nav-link">Modifier</a></button><br/>
+                <a href="{% url 'detail_article' article.id  %}" class="nav-link">Afficher Comentaires</a>
+                </li>
+             <br><br>
+            {% endfor %}
+        </ol>
+       
+        <!-- Afficher les liens de pagination -->
+        {% if articles.has_previous %}
+            <a href="?page={{ articles.previous_page_number }}">Précédent</a>
+        {% endif %}
+
+        {% for page in articles.paginator.page_range %}
+            {% if page == articles.number %}
+                <strong>{{ page }}</strong>
+            {% else %}
+                <a href="?page={{ page }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if articles.has_next %}
+            <a href="?page={{articles.next_page_number }}">Suivant</a>
+        {% endif %}
+
+            
+{%endblock%}

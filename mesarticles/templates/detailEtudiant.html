@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    <h2> Details sur {{ etu.nom }}</h2>
+{% endblock %} 
+{% block content %}
+          <p>  nom  : {{ etu.nom }} <br>  </p> 
+          <p>  Matricule  : {{ etu.matricule }} <br>  </p> 
+          <p>  date_naissance :  {{ etu.date_naissance|date:"d/m/Y"  }} <br> </p> 
+          <p>  taille : {{ etu.taille }} <br>  </p> 
+          <p>  telephone : {{ etu.tel }} <br>   </p> <br>   
+          <a href="{% url 'liste_Etudiant'  %}" class="nav-link"> Liste des Etudiants </a>
+{%endblock%}

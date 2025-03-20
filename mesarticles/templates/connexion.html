@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% block title %}
+    <h2> Connnexion au blog </h2>
+{% endblock %}
+{% block content %}
+
+<aside>
+    <p>
+     <center>
+       {% if message %}
+          <h2 class='rouge'>{{message}}</h2>  
+       {% endif %}
+      
+          <form method="post">
+              {% csrf_token %}
+              <fieldset>
+                  <legend> Connexion </legend>
+                  <table>
+                      <tr>  
+                          <td> Login :  </td>
+                          <td><input type='text' value='username' title='Login' name='username'></input> </td>
+                      </tr>
+                      <tr>  
+                          <td> Mot de Pass : </td>
+                          <td>  <input type='password' value='password' title='password' name='password'></input> </td>
+                      </tr>
+                      <tr>  
+                          <td>   </td> 
+                          <td>  <input type="submit" value="Se connecter "></td>
+                      </tr>
+                  </table>
+              </fieldset>
+          </form> 
+          <h2><a href="{% url 'inscription'  %}" class="nav-link"> Creer un Compte </a></h2>
+      </center>
+    </p>
+ </aside> 
+
+{% endblock %}
+
+

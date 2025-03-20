@@ -1,0 +1,74 @@
+<header id="header" class="header position-relative">
+    <div class="container-fluid container-xl position-relative">
+
+      <div class="top-row d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-end">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.webp" alt=""> -->
+          <h1 class="sitename">Blogy</h1><span>.</span>
+        </a>
+
+        <div class="d-flex align-items-center">
+          <div class="social-links">
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+            <a href="whatsapp://send?phone=+237675882556&text=Bonjour!" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
+          </div>
+
+          <form class="search-form ms-4">
+            <input type="text" placeholder="Search..." class="form-control">
+            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+          </form>
+          <p>.</p>
+          <a href="{% url 'logout' %}" class="active">Deconnexion</a>
+          
+        </div>
+      </div>
+ 
+    </div>
+{% if user.is_authenticated%}  <!-- contenu a afficher si luser est authenticated ( no user.is_authenticated) pour le contraire -->
+    <div class="nav-wrap">
+      <div class="container d-flex justify-content-center position-relative">
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="{% url 'accueil' %}" class="active">Accueil</a></li>
+            <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                {% for cat in categories %}
+                  <li>
+                    <a href="{% url 'liste_articles_Cat' cat.id %}">{{cat.nom}}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li><a href="{% url 'liste_article' %}">Liste des Articles</a></li>
+            <li class="dropdown"><a href="#"><span>Universites</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    {% for univer in univers %}
+                      <li>
+                        <a href="{% url 'listeEtu_Univer'  univer.id  %}">{{univer.nomUniver}}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+            </li>
+            <li><a href="{% url 'liste_Etudiant' %}">Liste des Etudiants</a></li>
+            <li class="dropdown"><a href="#"><span>Creation d'Object</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                  <li><a href="{% url 'create_article' %}">Creer Article </a></li>
+                  <li><a href="{% url 'create_categorie' %}">Creer Categorie</a></li>
+                  <li><a href="{% url 'create_contact' %}">Creer Contact </a></li>
+                  <li><a href="{% url 'create_etudiant'%}">Creer Etudiant </a></li>
+                  <li><a href="{% url 'create_universite'%}">Creer Universite </a></li>
+                 
+              </ul>
+           </li>
+            <li><a href="{% url 'create_etudiant' %}">Ajouter Etudiant</a></li>
+            <li><a href="{% url 'create_universite' %}">Ajouter Universite</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </div>
+{% endif %}
+  </header>

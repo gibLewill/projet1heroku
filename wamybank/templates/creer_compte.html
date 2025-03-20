@@ -1,0 +1,13 @@
+{% extends 'gestion_compte.html'%}
+{% block operation %}
+{% if message %}
+<h3>{{message}}<h3>    
+{% else %}
+<h2 class='enteteFormlaire'>Creer Compte Courant</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formulaire.as_p }}
+       <button type="submit">Enregistrer</button>
+    </form>
+{% endif %}
+{%endblock%}

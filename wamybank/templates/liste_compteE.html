@@ -1,0 +1,33 @@
+{% extends 'gestion_compte.html'%}
+{% block operation %}
+<h2 class='enteteFormlaire'>Liste des Comptes Epargne</h2>
+ <center>
+    <table>
+        
+        <thead>
+            <tr>
+                <th> Numero de Compte </th>
+                <th>solde </th>
+                <th>date ouverture </th>
+                <th> Taux d interet </th>
+                <th>nom proprietaire </th>
+            </tr> 
+        </thead> 
+        <tbody>
+            <ol>  
+                {% for compte in lesComptes %}
+                    <tr>
+                            <td> {{ compte.id_compteE}} <br></td>
+                            <td> {{ compte.solde}} <br></td>
+                            <td> {{ compte.date_creation|date:"d/m/Y" }}<br></td>
+                            <td> {{ compte.taux_interet }}  <br></td> 
+                            <td> {{ compte.client.nom }}  <br></td>        
+                    </tr>
+                {% endfor %}
+            </ol> 
+        </tbody>        
+    </table>
+    
+ </center>
+
+{%endblock%}

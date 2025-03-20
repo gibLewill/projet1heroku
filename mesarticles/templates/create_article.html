@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h2>Créer un nouvel article</h2>
+{% endblock %}
+{% block content %}
+
+    {% if message %}
+        <h3>{{message}}<h3>
+        <a href="{% url 'liste_article' %}" class="nav-link">Affichez la liste Articles </a>     
+    {% else %}
+    <h2 class='enteteFormlaire'>Créer un nouvel article</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ formulaire.as_p }}
+                <input type="file" name="image">
+                <button type="submit">TELEVERSER</button>
+                <button type="submit">Enregistrer</button>
+            </form>
+    {% endif %}
+{% endblock %}

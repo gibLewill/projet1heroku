@@ -1,0 +1,46 @@
+<header id="header" class="header position-relative">
+    <div class="container-fluid container-xl position-relative">
+
+      <div class="top-row d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-end">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.webp" alt=""> -->
+          <h1 class="sitename">WAMY BANK</h1><span>.</span>
+        </a>
+
+        <div class="d-flex align-items-center">
+          <div class="social-links">
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+            <a href="whatsapp://send?phone=+237675882556&text=Bonjour!" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
+          </div>
+
+          <form class="search-form ms-4">
+            <input type="text" placeholder="Search..." class="form-control">
+            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+          </form>
+          <p>.</p>
+          <a href="{% url 'connexion_bank' %}" class="active">Se deconnecter</a>
+          
+        </div>
+      </div>
+
+    </div>
+    <div class="nav-wrap">
+      <div class="container d-flex justify-content-center position-relative">
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="{%url 'operations' %}">Operations</a></li>
+            <li><a href="{%url 'listing' %}">Listings des Operations </a></li>
+            <li><a href="{%url 'historique' %}">Historiques des Operations </a></li>
+            <li><a href="{%url 'gestion_compte' %}">Gestion des Comptes </a></li>
+            <li><a href="{%url 'gestion_client' %}">Gestion des Clients </a></li>
+            <li><a href="">Voire Mon Profil</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </div>
+
+  </header>

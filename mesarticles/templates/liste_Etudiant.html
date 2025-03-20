@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h2>Liste des Etudiants</h2>
+{% endblock %} 
+
+{% block content %}
+<table>
+    <caption> <h3>Liste complette des Etudiants </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in LesEtudiants %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+<h1>  Debut des filtres synthaxe : MonObjet.objects.filter(taille__gt=150)  </h1> 
+<!--
+# liste des etudiants avec une taille > 150
+   etudiantPlus150m = Etudiant.objects.filter(taille__gt=150)
+   # liste des etudiants dont le nom commence par la lettre M
+   etudiantLettreM = Etudiant.objects.filter(nom__istartswith='M')
+   # liste des etudiants dont le nom commence par la lettre M et la taille >150
+   etudiantLettreM_Plus150m = etudiantPlus150m.filter(nom__istartswith='M')
+-->
+
+<table>
+    <caption> <h3>Liste des Etudiants avec une taille sup a 150 m </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in etudiantPlus150m %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+<table>
+    <caption> <h3>Liste des Etudiants dont le nom commence par la lettre M </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in etudiantLettreM %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+<table>
+    <caption> <h3>Liste des Etudiants dont le nom commence par la lettre M et la taille  sup 150 m</h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in etudiantLettreM_Plus150m %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+<h1> les filtres conditionnels avec le Q()  </h1> 
+
+<table>
+    <caption> <h3>Liste des Etudiants (soit le mat commence par 14 soit un la taille>170)</h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in etuMat14_taille170 %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+
+<table>
+    <caption> <h3>Liste des Etudiants dont le mat comment par 14 et la taille>170</h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in etuMat14_et_taille170 %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+<br>
+<h1> filtres et tris  </h1>
+
+<table>
+    <caption> <h3>Liste des Etudiants  classe par ordre alphabetique</h3> </caption>
+    <thead>
+        <tr>
+            <th> Id Etudiant </th>
+            <th>Nom</th>
+            <th>Matricule</th>
+            <th>Date de naissance</th>
+            <th>Taille en cm</th>
+            <th>telephone Cmr </th>
+            <th>Details Etudiant </th>
+            <th>Liste  Universites </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in etu_classe %}
+            
+            <tr>
+                    <td> {{ etudiant.id}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ etudiant.taille }}  <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+                    <th> <a href="{% url 'listeUniver_Etu'  etudiant.id  %}" class="nav-link"> Afficher Ses Universites </a> </th>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+<h1>  Debut des aggregations synthaxe : MonObjet.objects.aggregate(Count(...))  </h1> 
+<!--
+# les aggregations
+   resultat = Etudiant.objects.aaggregate(Count('nom'),Avg('taille'),Max('taille'),Min('taille'))
+-->
+<table>
+    <caption> <h3>Liste des Etudiants avec quelques aggregations </h3> </caption> 
+    <thead>
+        <tr>
+            
+            <th> Nombre de nom des etudiants avec le Count  </th>
+            <th> La somme des tailles  des etudiants avec le Avg </th>
+            <th> La moyenne des tailles  des etudiants avec le Avg </th>
+            <th>La taille Max des etudiants avec le Max</th>
+            <th>La taille Min des etudiants avec le Min </th>
+        </tr> 
+    </thead> 
+    <tbody> 
+        
+            <tr>
+                   {% for c,v in resultat.items %} 
+                    <td> {{v}} </td> 
+                    {%endfor%}      
+            </tr>
+
+               <!-- ou cette presentation-->
+
+            <tr>
+             
+                 <td> {{resultat.nom__count}} </td> 
+                 <td> {{resultat.taille__sum}} </td> 
+                 <td> {{resultat.taille__avg}} </td>
+                 <td> {{resultat.taille__max}} </td>
+                 <td> {{resultat.taille__min}} </td>
+                       
+            </tr> 
+
+    </tbody>               
+</table>
+
+ <br/>
+ <a href="{% url 'create_etudiant' %}" class="nav-link">Ajoutez  un nouvel Etudiant </a> 
+<p><strong> Nous avons {{nombre_etudiant}} Etudiants dans cette Universite  </strong> </p>
+{%endblock%}

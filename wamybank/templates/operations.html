@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+<br/>
+    <h1> Operations </h1>
+{% endblock %}
+{% block content %}
+<aside>
+    <p>
+     <center>
+        <div class="nav-wrap">
+            <div class="container d-flex justify-content-center position-relative">
+              <nav id="navmenu" class="navmenu">
+                <ul>
+                  <li><a href="{% url 'depot' %}">Depot</a></li>
+                  <li><a href="{% url 'retrait' %}">Retrait</a></li>
+                  <li><a href="{% url 'virement' %}">Virement</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+              </nav>
+            </div>
+          </div>
+        {% block operation %}
+          <p>{{op}}</p>
+        {%endblock%}
+      </center>
+    </p>
+ </aside>
+{% endblock %}
+
+

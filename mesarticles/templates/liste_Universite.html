@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h2>Liste des Etudiants</h2>
+{% endblock %} 
+
+{% block content %}
+<table>
+    <caption> <h3>Liste des Universites </h3> </caption>
+    <thead>
+        <tr>
+            <th> Non Universite</th>
+            <th>Type Universite</th>
+            <th>Etudiant Universite</th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for univer in universites %}
+                
+                <tr>
+                        <td> {{ univer.nomUniver}} <br></td>
+                        <td> {{ univer.typeUniver  }}<br></td>
+                        <th> <a href="{% url 'listeEtu_Univer'  univer.id   %}" class="nav-link"> liste de ses Etudiants </a> </th>
+                </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+ </table>
+
+ <br/>
+ <a href="{% url 'create_universite' %}" class="nav-link">Ajoutez  une nouvellle Universite </a> 
+ <p><strong> Nous avons {{nbr_univer}} Universites  </strong> </p>
+
+{%endblock%}

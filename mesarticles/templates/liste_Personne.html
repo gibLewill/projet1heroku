@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h2>Liste des personnes</h2>
+{% endblock %} 
+
+{% block content %}
+
+<table>
+    <caption> <h3>Liste de Tout le monde, {{nbr}} personnes </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id personne </th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>age</th>
+            <th>telephone Cmr </th>
+        
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for per in personne %}
+            
+            <tr>
+                    <td> {{ per.id}} <br></td>
+                    <td> {{ per.nom}} <br></td>
+                    <td> {{ per.prenom }}<br></td>
+                    <td> {{ per.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ per.age }}  <br></td>
+                    <td> {{ per.tel }}<br></td>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+<table>
+    <caption> <h3>habitants dune peresse </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id personne </th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>age</th>
+            <th>telephone Cmr </th>
+        
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for per in personneper %}
+            
+            <tr>
+                    <td> {{ per.id}} <br></td>
+                    <td> {{ per.nom}} <br></td>
+                    <td> {{ per.prenom }}<br></td>
+                    <td> {{ per.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ per.age }}  <br></td>
+                    <td> {{ per.tel }}<br></td>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+ <br/>
+ <table>
+    <caption> <h3> {{nbr1}} habitants de la ville de Yde  </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id personne </th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>age</th>
+            <th>telephone Cmr </th>
+        
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for per in personneYde %}
+            
+            <tr>
+                    <td> {{ per.id}} <br></td>
+                    <td> {{ per.nom}} <br></td>
+                    <td> {{ per.prenom }}<br></td>
+                    <td> {{ per.date_naissance|date:"d/m/Y" }}<br></td>
+                    <td> {{ per.age }}  <br></td>
+                    <td> {{ per.tel }}<br></td>
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+
+<table>
+    <caption> <h3>liste des  {{nbr2}} peresses et leurs Habitants  </h3> </caption>
+    <thead>
+        <tr>
+            <th> Id peresse </th>
+            <th> Numero </th>
+            <th>Ville </th>
+            <th>Habitant</th>
+        </tr> 
+    </thead> 
+    <tbody>
+        
+           
+            {% for adr in adresses %}
+            
+            <tr>
+                    <td> {{ adr.id}} <br></td>
+                    <td> {{ adr.numroRue}} <br></td>
+                    <td> {{ adr.ville }}<br></td>
+                    <td> {{ adr.pesonne}}<br></td>
+                   
+            </tr>
+            {% endfor %}
+        
+    </tbody>        
+</table>
+
+ <br/>
+{%endblock%}

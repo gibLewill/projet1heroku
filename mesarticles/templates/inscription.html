@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+<h1> Inscription </h1>
+{% endblock %} 
+{% block content %} 
+<aside>
+    <p>
+     <center>
+          <form method="post">
+              <fieldset>
+                  <legend> Inscription  </legend>
+                      {% csrf_token %}
+               <div>
+                      <label for id='id_username'>Nom utilisateur :</label>
+                      <input type='text' id='id_username' name='username' value='{{formulaire.username.value}}'>
+                                <!-- affiche erreur-->
+                         {% if formulaire.username.errors%}
+                               <div style='color:red;'> {{formulaire.username.errors}}</div>
+                         {%endif%}
+                       
+                
+                           <label for id='id_password1'>Mot de Passe :</label>
+                           <input type='password' id='id_password1' name='password1' value='{{formulaire.password1.value}}'>
+                        <!-- affiche erreur-->
+                              {% if formulaire.password1.errors%}
+                                <div style='color:red;'>{{formulaire.password1.errors}}</div>
+                               {%endif%}
+                        
+                
+                
+                          <label for id='id_password2'>Confirmez Mot de Passe :</label>
+                          <input type='password' id='id_password2' name='password2' value='{{formulaire.password2.value}}'>
+                                <!-- affiche erreur-->
+                                {% if formulaire.password2.errors%}
+                                  <div style='color:red;'>{{formulaire.password2.errors}} </div>
+                                {%endif%}
+                          
+                 </div>  
+                      <input type="submit" value="Enregistrer">
+              </fieldset>
+          </form> 
+          
+      </center>
+    </p>
+ </aside> 
+{%endblock%}
+    
+   

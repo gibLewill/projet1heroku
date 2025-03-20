@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+<h1> Confirmation inscription </h1>
+{% endblock %} 
+{% block content %} 
+        <center >
+             <h4 class='verte'> salut  {{nomCreer}}!  votre compte a ete cree avec succes  </h4>
+             <a href="{% url 'connexion'  %}" class="nav-link" id='motAccueil'> Connecte vous ici </a>
+        </center>
+{%endblock%}

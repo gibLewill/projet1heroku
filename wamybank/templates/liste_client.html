@@ -1,0 +1,30 @@
+{% extends 'gestion_client.html'%}
+{% block operation %}
+<h2 class='enteteFormlaire'>Liste des Clients </h2>
+<center>
+    <table>
+        <thead>
+            <tr>
+                <th> Id  </th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>date_naissaince</th>
+                <th>telephone</th>
+            </tr> 
+        </thead> 
+        <tbody>
+            <ol>  
+                {% for client in lesClients %}
+                <tr>
+                        <td> {{ client.id}} <br></td>
+                        <td> {{ client.nom}} <br></td>
+                        <td> {{ client.prenom }}<br></td>
+                        <td> {{ client.date_naissaince|date:"d/m/Y" }}<br></td>
+                        <td> {{ client.tel }}  <br></td>
+                </tr>       
+                {% endfor %}
+            </ol> 
+        </tbody>        
+    </table>
+</center>
+{%endblock%}

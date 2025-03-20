@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+<br/>
+    <h1> Gestion des comptes</h1>
+{% endblock %}
+{% block content %}
+<aside>
+    <p>
+     <center>
+        <div class="nav-wrap">
+            <div class="container d-flex justify-content-center position-relative">
+              <nav id="navmenu" class="navmenu">
+                <ul>
+                  <li><a href="{% url 'creer_compte' %}">Creer un Compte Courant</a></li>
+                  <li><a href="{% url 'creer_compte_epargne' %}">Creer un Compte d Epargne</a></li>
+                  <li><a href="{% url 'liste_compteC' %}">liste des comptes Courant</a></li>
+                  <li><a href="{% url 'liste_compteE' %}">liste des comptes d Epargne </a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+              </nav>
+            </div>
+          </div>
+        {% block operation %}
+          <h2>{{op}}</h2>
+        {%endblock%}
+      </center>
+    </p>
+ </aside>
+{% endblock %}
+
+

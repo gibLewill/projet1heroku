@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    <h1> Details de :  {{ article.titre }} </h1>
+{% endblock %} 
+{% block content %}
+
+            N <strong>{{ article.id }} </strong> 
+            <p>{{ article.contenu }} du {{ article.date_publication|date:"d/m/Y  H:i:s"}}</p>
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.titre }}">
+            {% endif %}
+
+        {% if commentaires %}
+         (<i class="fa-solid fa-comment">{{commentaires.count}}</i> commentaires)
+            <ul>
+                    {% for commentaire in commentaires %}<!-- ({{commentaire.auteur.username}})  -->
+                        <li>
+                            {{ commentaire.contenu }}  ecrire par {{commentaire.auteur.username}}
+                            Publie le {{ commentaire.date_creation|date:'d/m/Y'}}<br>
+                        </li>
+                        <!-- ajout des likes sur un commentaire-->
+                         <p>
+                            {% if request.user in commentaire.likes.all%}
+                            <a href="{% url 'like_commentaire' commentaire.id %}">j'aime plus</a>
+                             {%else%}        
+                             <a href="{% url 'like_commentaire' commentaire.id %}">j'aime</a>
+                            {% endif %}
+                           <i class="fa-solid fa-thumbs-up"> {{commentaire.likes.count}}</i>likes
+                         </p>
+                    {% endfor %}
+            </ul>
+        {%endif%}
+        <form method="post">
+            {% csrf_token %}
+            <i class="fa-solid fa-comment"></i>
+            {{ formulaire.as_p }}
+            <input type="submit" value="Pubier" >
+        </form>  
+{% endblock %}

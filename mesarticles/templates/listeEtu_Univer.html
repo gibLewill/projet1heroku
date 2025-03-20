@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h2>Liste des Etudiants par Universite </h2>
+{% endblock %} 
+
+{% block content %}
+<table>
+    <caption> <h3>Luniversite de **** {{univer.nomUniver}} ****  Compte {{nbr}} Etudiants </h3> </caption>
+    <thead>
+        <tr>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Taille</th>
+            <th>telephone </th>
+            <th> Afficher details </th>
+
+        </tr> 
+    </thead> 
+    <tbody>
+        <ol>
+            
+            {% for etudiant in mesEtudiants %}
+            
+            <tr>
+                    <td> {{ etudiant.matricule}} <br></td>
+                    <td> {{ etudiant.nom }}<br></td>
+                    <td> {{ etudiant.date_naissance }}<br></td>
+                    <td> {{ etudiant.taille }} cm <br></td>
+                    <td> {{ etudiant.tel }}<br></td>
+                    <th> <a href="{% url 'detailEtudiant'  etudiant.id  %}" class="nav-link"> details </a> </th>
+
+            </tr>
+            {% endfor %}
+        </ol> 
+    </tbody>        
+</table>
+
+ <br/>
+ <a href="{% url 'create_etudiant' %}" class="nav-link">Ajoutez  un nouvel Etudiant </a> 
+{% endblock content %}

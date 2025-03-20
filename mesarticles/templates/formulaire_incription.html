@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h2>Formulaire d inscription </h2>
+{% endblock %}
+{% block content %}
+        {% if message %}
+            <h3>{{message}}<h3>
+        {% else %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ formulaire.as_p }}
+                        <input type="submit" value="S'inscrire">
+                    </form>
+         {% endif %}
+
+                   {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="error">{{ error }}</div>
+                        {% endfor %}
+                   {% endfor %}
+
+  <!-- 
+    {% if message %}
+        <h3>{{message}}<h3>
+        <a href="{% url 'article_form' %}" class="nav-link">Ajoutez  un nouvel Article </a> 
+                
+    {% else %}
+            <form method="post">
+                {% csrf_token %}
+                {{ formulaire.as_p }}
+            <button type="submit">Valider</button>
+            </form>
+    {% endif %}
+    
+{% endblock %}
+-->

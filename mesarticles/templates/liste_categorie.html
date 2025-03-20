@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    <h2>Liste des Categories</h2> 
+{% endblock %} 
+{% block content %}
+       <ol>
+           {% for cat in categories %}
+            <li>
+                Nom : {{ cat.nom }} <br>
+                <a href="{% url 'liste_articles_Cat' cat.id %}" class="nav-link">Afficher ses articles </a> 
+            </li>
+            <br><br>
+           {% endfor %}
+       </ol> 
+       <button>  <a href="{% url 'create_categorie' %}" class="nav-link">Creez une nouvelle Categorie </a></button>   
+{%endblock%}

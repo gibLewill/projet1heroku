@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+<br/>
+    <h1> Bienvenu a WAMY_BANK </h1>
+{% endblock %}
+
+{% block content %}
+<aside>
+    <p>
+     <center>
+        <fieldset>
+            <legend> Vos Cordonnees Bancaires </legend>
+            <table>
+                <tr>  
+                    <td> Nom :  </td>
+                    <td> {{use.username}} -  {{use.client.prenom}}  </td>
+                </tr>
+                <tr>  
+                    <td> Date de date_naissaince : </td>
+                    <td>  <td> {{use.client.date_naissaince}}</td>
+                </tr>
+                <tr>  
+                    <td>  Telephone : </td> 
+                    <td> {{use.client.tel}} </td>
+                </tr>
+                <tr>  
+                    <td>  Email : </td> 
+                    <td> {{use.client.email}} </td>
+                </tr>
+            </table>
+        </fieldset>       
+      </center>
+    </p>
+ </aside>
+{% endblock %}
+
+

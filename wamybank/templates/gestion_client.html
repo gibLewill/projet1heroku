@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+<br/>
+    <h1> Gestion des clients </h1>
+{% endblock %}
+{% block content %}
+<aside>
+    <p>
+     <center>
+        <div class="nav-wrap">
+            <div class="container d-flex justify-content-center position-relative">
+              <nav id="navmenu" class="navmenu">
+                <ul>
+                  <li><a href="{% url 'creer_client' %}">Ajouter un Client</a></li>
+                  <li><a href="{% url 'liste_client' %}">liste des Clients</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+              </nav>
+            </div>
+          </div>
+        {% block operation %}
+          <h2>{{op}}</h2>
+        {%endblock%}
+      </center>
+    </p>
+ </aside>
+{% endblock %}
+
+

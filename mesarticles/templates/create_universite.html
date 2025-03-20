@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h2>Créer une nouvelle Universite</h2>
+{% endblock %}
+{% block content %}
+
+    {% if message %}
+        <h3>{{message}}<h3>
+        <a href="{% url 'create_universite' %}" class="nav-link">Ajoutez  une nouvellle Universite </a> 
+              <p> ou </p>
+        <a href="{% url 'liste_Universite' %}" class="nav-link">Affichez la liste des Universites </a>     
+    {% else %}
+    <h2 class='enteteFormlaire'>Créer une nouvelle Universite</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ formulaire.as_p }}
+                <input type="submit" value="Ajouter" >
+            </form>
+    {% endif %}   
+{% endblock %}

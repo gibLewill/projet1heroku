@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+    <h2>Liste des {{taille}} Article (s)  de la Categorie {{ma_cat}}</h2>
+{% endblock %} 
+{% block content %}
+       <ol>
+           
+           {% for article in mesArticles %}
+            <li>
+               <strong>Titre : {{ article.titre }} </strong>  <br><br>
+               Contenu : {{ article.contenu }}<br>
+               Publié le : {{ article.date_publication|date:"d/m/Y    H:i:s"}}<br>
+               {% if article.image %}
+                  <img src="{{ article.image.url }}" alt="{{ article.titre }}">
+               {% endif %}
+               <a href="{% url 'detail_article' article.id  %}" class="nav-link">Afficher Comentaires</a>
+            </li>
+            <br>
+           {% endfor %}
+       </ol>
+           
+{%endblock%}
